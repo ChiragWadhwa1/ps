@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="light"> <!-- Default to light theme -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Ears - Yashvi | Psychologist</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Light Theme (Green/Teal)
+                        'brand-light-bg': '#f0fdfa', // Very light teal
+                        'brand-light-surface': '#ffffff',
+                        'brand-light-text': '#374151', // Gray 700
+                        'brand-light-heading': '#134e4a', // Teal 900
+                        'brand-accent': '#14b8a6', // Teal 500
+                        'brand-accent-dark': '#0d9488', // Teal 600
+                        // Dark Theme
+                        'brand-dark-bg': '#18181b', // Zinc 900 (softer dark)
+                        'brand-dark-surface': '#2727a', // Zinc 800
+                        'brand-dark-text': '#d1d5db', // Gray 300
+                        'brand-dark-heading': '#f9fafb', // Gray 50
+                        'brand-dark-accent': '#2dd4bf', // Teal 400 (restored green)
+                        'brand-dark-accent-hover': '#14b8a6', // Teal 500
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-brand-light-bg text-brand-light-text dark:bg-brand-dark-bg dark:text-brand-dark-text">
+
+    <!-- Header & Navigation -->
+    <header id="main-header" class="bg-brand-light-surface/80 dark:bg-brand-dark-surface/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm transition-shadow duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+             <a href="#" class="flex items-center space-x-2 text-brand-accent dark:text-brand-dark-accent">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 transition-transform duration-300 hover:rotate-12">
+                    <path d="M16 8.5C16 11.5 13.5 14.5 10.5 16.5C7.5 14.5 5 11.5 5 8.5C5 5.46243 7.46243 3 10.5 3C13.5376 3 16 5.46243 16 8.5Z" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M10.5 16.5V21M10.5 21C12.5 21 14.5 19 14.5 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M10.5 6C11.5 5 13 4.5 14 5C15.5 5.75 16.5 8 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="text-2xl font-bold">Healing Ears</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link-anim text-brand-light-text dark:text-brand-dark-text hover:text-brand-accent dark:hover:text-brand-dark-accent transition duration-300">About</a>
+                    <a href="#services" class="nav-link-anim text-brand-light-text dark:text-brand-dark-text hover:text-brand-accent dark:hover:text-brand-dark-accent transition duration-300">Services</a>
+                    <a href="#testimonials" class="nav-link-anim text-brand-light-text dark:text-brand-dark-text hover:text-brand-accent dark:hover:text-brand-dark-accent transition duration-300">Testimonials</a>
+                    <a href="#contact" class="btn-primary bg-brand-accent dark:bg-brand-dark-accent text-white px-4 py-2 rounded-full hover:bg-brand-accent-dark dark:hover:bg-brand-dark-accent-hover transition duration-300 shadow">Book a Session</a>
+                </nav>
+                 <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent dark:focus:ring-brand-dark-accent transition-transform duration-300 transform hover:scale-110">
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5 text-brand-light-text dark:text-brand-dark-text hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5 text-brand-light-text dark:text-brand-dark-text hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden text-brand-light-heading dark:text-brand-dark-heading focus:outline-none z-50">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-full sm:w-72 bg-brand-light-surface dark:bg-brand-dark-surface z-40 pt-24 px-6 shadow-2xl">
+        <nav class="flex flex-col space-y-6">
+            <a href="#about" class="mobile-nav-link text-xl text-brand-light-text dark:text-brand-dark-text hover:text-brand-accent dark:hover:text-brand-dark-accent">About</a>
+            <a href="#services" class="mobile-nav-link text-xl text-brand-light-text dark:text-brand-dark-text hover:text-brand-accent dark:hover:text-brand-dark-accent">Services</a>
+            <a href="#testimonials" class="mobile-nav-link text-xl text-brand-light-text dark:text-brand-dark-text hover:text-brand-accent dark:hover:text-brand-dark-accent">Testimonials</a>
+            <a href="#contact" class="mobile-nav-link block mt-4 bg-brand-accent dark:bg-brand-dark-accent text-white text-center px-4 py-3 rounded-full hover:bg-brand-accent-dark dark:hover:bg-brand-dark-accent-hover shadow">Book a Session</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 overflow-hidden">
+            <!-- Background Animations -->
+            <div class="orb-container -z-10">
+                <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
+            </div>
+            <canvas id="interactive-canvas" class="absolute top-0 left-0 w-full h-full pointer-events-none -z-10"></canvas>
+            
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl font-bold text-brand-light-heading dark:text-brand-dark-heading leading-tight fade-in">Find Your Path to Peace & Clarity</h1>
+                <p class="mt-4 text-lg text-brand-light-text dark:text-brand-dark-text max-w-2xl mx-auto fade-in" style="transition-delay: 100ms;">Compassionate and professional psychological support by Yashvi. Your journey towards mental well-being starts here.</p>
+                <a href="#contact" class="mt-8 inline-block bg-brand-accent dark:bg-brand-dark-accent text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-brand-accent-dark dark:hover:bg-brand-dark-accent-hover transition duration-300 shadow-lg btn-primary fade-in" style="transition-delay: 200ms;">
+                    Take the First Step
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12 fade-in">
+                    <div class="md:w-1/3">
+                        <img src="WhatsApp Image 2025-09-06 at 11.15.51_836a3810.jpg" alt="Yashvi" class="rounded-full shadow-2xl mx-auto w-64 h-64 md:w-80 md:h-80 object-cover">
+                    </div>
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-bold text-brand-light-heading dark:text-brand-dark-heading mb-4">Meet Yashvi</h2>
+                        <p class="text-brand-light-text dark:text-brand-dark-text mb-4">Yashvi is a dedicated and empathetic psychologist with a Master's degree in Clinical Psychology. She believes in creating a safe, non-judgmental space where you can explore your thoughts and feelings freely.</p>
+                        <p class="text-brand-light-text dark:text-brand-dark-text">Her approach is client-centered, integrating evidence-based therapies like Cognitive Behavioral Therapy (CBT) and Mindfulness to create a personalized treatment plan. She is committed to helping you develop coping strategies, build resilience, and achieve a more balanced and fulfilling life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-brand-light-surface dark:bg-brand-dark-surface">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="text-3xl font-bold text-brand-light-heading dark:text-brand-dark-heading">How I Can Help</h2>
+                    <p class="text-brand-light-text dark:text-brand-dark-text mt-2">Specialized support tailored to your unique needs.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-brand-light-bg dark:bg-brand-dark-bg p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 fade-in">
+                        <h3 class="text-xl font-semibold text-brand-light-heading dark:text-brand-dark-heading mb-3">Individual Therapy</h3>
+                        <p>One-on-one sessions to address personal challenges, from anxiety and depression to self-esteem and life transitions.</p>
+                    </div>
+                    <div class="bg-brand-light-bg dark:bg-brand-dark-bg p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 fade-in" style="transition-delay: 150ms;">
+                        <h3 class="text-xl font-semibold text-brand-light-heading dark:text-brand-dark-heading mb-3">Stress & Anxiety Management</h3>
+                        <p>Learn practical techniques to manage stress, control anxiety, and regain a sense of calm in your daily life.</p>
+                    </div>
+                    <div class="bg-brand-light-bg dark:bg-brand-dark-bg p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 fade-in" style="transition-delay: 300ms;">
+                        <h3 class="text-xl font-semibold text-brand-light-heading dark:text-brand-dark-heading mb-3">Relationship Counseling</h3>
+                        <p>Improve communication, resolve conflicts, and build stronger, healthier relationships with your partner or family.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="text-3xl font-bold text-brand-light-heading dark:text-brand-dark-heading">Words of Trust & Transformation</h2>
+                    <p class="text-brand-light-text dark:text-brand-dark-text mt-2">What clients are saying about their journey.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Testimonial Screenshot 1 -->
+                    <div class="bg-brand-light-surface dark:bg-brand-dark-surface p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 fade-in">
+                        <img src="WhatsApp Image 2025-08-21 at 16.03.36_3b763b3a.jpg" alt="Testimonial screenshot 1" class="rounded-md w-full">
+                    </div>
+                    <!-- Testimonial Screenshot 2 -->
+                    <div class="bg-brand-light-surface dark:bg-brand-dark-surface p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 fade-in" style="transition-delay: 150ms;">
+                        <img src="WhatsApp Image 2025-08-21 at 11.43.02_16607e79.jpg" alt="Testimonial screenshot 2" class="rounded-md w-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Inquiry Form Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="max-w-xl mx-auto bg-brand-light-surface dark:bg-brand-dark-surface p-8 md:p-12 rounded-2xl shadow-2xl fade-in">
+                    <h2 class="text-3xl font-bold text-center text-brand-light-heading dark:text-brand-dark-heading mb-2">Take the First Step Today</h2>
+                    <p class="text-center text-brand-light-text dark:text-brand-dark-text mb-6">Send an inquiry directly via WhatsApp. All conversations are confidential.</p>
+                    
+                     <div class="text-center mb-6 text-sm text-brand-light-text dark:text-brand-dark-text">
+                        <p>Or email directly at: <a href="mailto:healing.ears.yashvi@gmail.com" class="font-semibold text-brand-accent dark:text-brand-dark-accent hover:underline">healing.ears.yashvi@gmail.com</a></p>
+                    </div>
+
+                    <form id="whatsapp-form">
+                        <div class="mb-5">
+                            <label for="name" class="block mb-2 text-sm font-medium">Full Name</label>
+                            <input type="text" id="name" name="name" class="bg-brand-light-bg dark:bg-brand-dark-bg border border-gray-300 dark:border-gray-600 text-sm rounded-lg focus:ring-brand-accent dark:focus:ring-brand-dark-accent focus:border-brand-accent dark:focus:border-brand-dark-accent block w-full p-2.5" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="phone" class="block mb-2 text-sm font-medium">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="bg-brand-light-bg dark:bg-brand-dark-bg border border-gray-300 dark:border-gray-600 text-sm rounded-lg focus:ring-brand-accent dark:focus:ring-brand-dark-accent focus:border-brand-accent dark:focus:border-brand-dark-accent block w-full p-2.5" placeholder="Your Phone Number" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="message" class="block mb-2 text-sm font-medium">Briefly describe what you're looking for</label>
+                            <textarea id="message" name="message" rows="4" class="bg-brand-light-bg dark:bg-brand-dark-bg border border-gray-300 dark:border-gray-600 text-sm rounded-lg focus:ring-brand-accent dark:focus:ring-brand-dark-accent focus:border-brand-accent dark:focus:border-brand-dark-accent block w-full p-2.5" placeholder="e.g., I'm looking for help with anxiety..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-3 text-center transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                            </svg>
+                            Send Inquiry on WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-light-surface dark:bg-brand-dark-surface py-10">
+        <div class="container mx-auto px-6 text-center text-brand-light-text dark:text-brand-dark-text">
+            <div class="mt-6 flex justify-center space-x-6 mb-6">
+                <a href="mailto:healing.ears.yashvi@gmail.com" class="text-gray-400 hover:text-brand-accent dark:hover:text-brand-dark-accent transition">
+                    <span class="sr-only">Email</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M2.25 6.375a2.25 2.25 0 012.25-2.25h15a2.25 2.25 0 012.25 2.25v11.25a2.25 2.25 0 01-2.25-2.25h-15a2.25 2.25 0 01-2.25-2.25V6.375zM4.5 4.125A2.25 2.25 0 002.25 6.375v.512l8.625 5.175a.75.75 0 00.75 0l8.625-5.175V6.375a2.25 2.25 0 00-2.25-2.25H4.5zM2.25 8.131l6.984 4.19a2.25 2.25 0 002.282 0l6.984-4.19V17.625a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.131z"/>
+                    </svg>
+                </a>
+            </div>
+            <p>&copy; 2024 Healing Ears. All Rights Reserved.</p>
+            <p class="text-sm mt-2 opacity-75">Designed to provide a safe and supportive environment.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
