@@ -4,7 +4,6 @@ const darkIcon = document.getElementById('theme-toggle-dark-icon');
 const lightIcon = document.getElementById('theme-toggle-light-icon');
 const htmlEl = document.documentElement;
 
-// Set light mode as default, only use dark if explicitly saved
 if (localStorage.getItem('theme') === 'dark') {
     htmlEl.classList.add('dark');
     htmlEl.classList.remove('light');
@@ -22,40 +21,29 @@ themeToggleBtn.addEventListener('click', () => {
     htmlEl.classList.toggle('light');
     darkIcon.classList.toggle('hidden');
     lightIcon.classList.toggle('hidden');
-    if (htmlEl.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
-    }
+    localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
 });
 
 // --- Mobile Menu Toggle ---
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
 const toggleMenu = () => {
     mobileMenu.classList.toggle('is-open');
     document.body.classList.toggle('menu-open');
 };
-
 mobileMenuButton.addEventListener('click', toggleMenu);
 mobileNavLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
 // --- Header Scroll Effect ---
 const header = document.getElementById('main-header');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-        header.classList.add('header-scrolled');
-    } else {
-        header.classList.remove('header-scrolled');
-    }
+    header.classList.toggle('header-scrolled', window.scrollY > 20);
 });
 
 // --- WhatsApp Form Submission ---
 document.getElementById('whatsapp-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    // IMPORTANT: Replace with your actual WhatsApp number including the country code (without '+').
     const psychologistWhatsAppNumber = '910000000000'; 
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
@@ -77,6 +65,35 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 fadeInElements.forEach(el => observer.observe(el));
+
+
+// --- Testimonial Slider ---
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('.testimonial-slider');
+    if (slider) {
+        const sliderContainer = slider.querySelector('.flex');
+        const prevButton = slider.querySelector('.prev');
+        const nextButton = slider.querySelector('.next');
+        let currentIndex = 0;
+        const slides = sliderContainer.children;
+        const slideCount = slides.length;
+
+        function updateSlider() {
+            sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateSlider();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateSlider();
+        });
+    }
+});
+
 
 // --- Interactive Sparkle Canvas ---
 const canvas = document.getElementById('interactive-canvas');
@@ -115,9 +132,7 @@ function handleParticles() {
     for (let i = particles.length - 1; i >= 0; i--) {
         particles[i].update();
         particles[i].draw();
-        if (particles[i].life <= 0) {
-            particles.splice(i, 1);
-        }
+        if (particles[i].life <= 0) particles.splice(i, 1);
     }
 }
 
@@ -131,20 +146,16 @@ canvas.parentElement.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    if (particles.length < 100) { // Limit total particles for performance
-         for (let i = 0; i < 2; i++) {
-            particles.push(new Particle(x, y));
-        }
+    if (particles.length < 100) {
+         for (let i = 0; i < 2; i++) particles.push(new Particle(x, y));
     }
 });
 
 window.addEventListener('resize', resizeCanvas);
-
 themeToggleBtn.addEventListener('click', () => { 
-    setTimeout(() => { 
-        isDarkMode = () => document.documentElement.classList.contains('dark'); 
-    }, 50); 
+    setTimeout(() => { isDarkMode = () => document.documentElement.classList.contains('dark'); }, 50); 
 });
 
 resizeCanvas();
 animateParticles();
+
